@@ -1,3 +1,62 @@
+:root {
+  font-size: 16px;
+  font-family: monospace, Helvetica, sans-serif;
+  --primary-color: #e46a53;
+  --primary-color-link-hover: #fab4a4;
+  --secondary-color: #6e5889;
+  --secondary-color-link-hover: #a1578a;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: whitesmoke;
+}
+
 .primary-color {
-  background-color: #e46a53;
+  background-color: var(--primary-color);
+}
+
+.content-section {
+  background-color: white;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 3px;
+}
+
+.article-metadata {
+  display: flex;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.article-metadata small {
+  margin-left: auto;
+}
+
+.article-metadata a {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.article-metadata a:hover {
+  color: var(--primary-color-link-hover);
+  text-decoration: none;
+}
+
+.article-title {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+a.article-title:hover {
+  color: var(--secondary-color-link-hover);
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
 }
