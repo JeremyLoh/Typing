@@ -1,0 +1,39 @@
+{% extends "blog/layout.html" %}
+
+{% block title %}
+Register
+{% endblock title %}
+
+{% block body %}
+  <div class="content-section">
+    <!-- By default, POST to same register route when form is submitted -->
+    <form method="POST">
+      {% csrf_token %}
+      <!-- Group related elements in form -->
+      <fieldset class="form-group">
+        <!-- Add more Details for form -->
+        <!-- mb is margin bottom (bootstrap) -->
+        <legend class="border-bottom mb-4">
+          Join Today
+        </legend>
+        <!-- Render form in paragraph text -->
+        {{ form.as_p }}
+      </fieldset>
+
+      <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">
+          Sign Up
+        </button>
+      </div>
+    </form>
+
+    <!-- pt is padding top, bootstrap -->
+    <div class="border-top pt-3">
+      <small class="text-muted">
+        Already Have An Account?
+        <!-- ml is margin left, bootstrap -->
+        <a class="ml-2" href="#">Sign In</a>
+      </small>
+    </div>
+  </div>
+{% endblock body %}
