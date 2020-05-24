@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-Register
+Login
 {% endblock title %}
 
 {% block body %}
@@ -15,7 +15,7 @@ Register
         <!-- Add more Details for form -->
         <!-- mb is margin bottom (bootstrap) -->
         <legend class="border-bottom mb-4">
-          Join Today
+          Log In
         </legend>
         <!-- Use filter provided by django-crispy-forms -->
         {{ form|crispy }}
@@ -23,7 +23,7 @@ Register
 
       <div class="form-group">
         <button class="btn btn-outline-info" type="submit">
-          Sign Up
+          Login
         </button>
       </div>
     </form>
@@ -31,9 +31,9 @@ Register
     <!-- pt is padding top, bootstrap -->
     <div class="border-top pt-3">
       <small class="text-muted">
-        Already Have An Account?
+        Need An Account?
         <!-- ml is margin left, bootstrap -->
-        <a class="ml-2" href="#">Sign In</a>
+        <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
       </small>
     </div>
   </div>

@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'register',
+    'users',
     'blog',
     'crispy_forms',
     'django.contrib.admin',
@@ -124,3 +124,6 @@ STATIC_URL = '/static/'
 
 # Update CSS Framework
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'blog-index'
+LOGIN_URL = 'login'
