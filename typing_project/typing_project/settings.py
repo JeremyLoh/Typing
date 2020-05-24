@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'users',
+    'users.apps.UsersConfig',
     'blog',
     'crispy_forms',
     'django.contrib.admin',
@@ -121,6 +121,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Full path to directory for django to store uploaded files
+# Stored in file system, Not stored in database
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Public URL of directory (how media is accessed by browser)
+MEDIA_URL = '/media/'
 
 # Update CSS Framework
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
