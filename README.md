@@ -13,3 +13,6 @@ A Blog made using Python (3.7.4), Django (3.0.6) and Bootstrap
 
 1. Bootstrap 4 Class reference - https://www.w3schools.com/bootstrap4/bootstrap_ref_all_classes.asp
 1. ColorSpace - https://mycolor.space/
+1. Default Profile Image (from flaticon)
+   1. https://www.flaticon.com/authors/freepik
+   1. https://www.flaticon.com/free-icon/user_2919573?term=profile&page=1&position=1
