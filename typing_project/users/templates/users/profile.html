@@ -1,4 +1,5 @@
 {% extends "blog/layout.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}
 Profile
@@ -25,5 +26,18 @@ Profile
         {% endif %}
       </div>
     </div>
+
+    <!-- enctype is used to pass image data properly -->
+    <form method="POST" enctype="multipart/form-data" class="mt-4">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Profile Info</legend>
+        {{ user_update_form|crispy }}
+        {{ profile_update_form|crispy }}
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-outline-info">Update</button>
+      </div>
+    </form>
   </div>
 {% endblock body %}
