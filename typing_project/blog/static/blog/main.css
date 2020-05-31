@@ -48,6 +48,12 @@ body {
   border-radius: 3px;
 }
 
+.article-img {
+  height: 50px;
+  width: 50px;
+  margin-right: 8px;
+}
+
 .article-metadata {
   display: flex;
   font-size: 1.2rem;
