@@ -8,6 +8,7 @@ A Blog made using Python (3.7.4), Django (3.0.6) and Bootstrap
 1. Django - https://docs.djangoproject.com/en/3.0/intro/tutorial01/
 1. Django-Crispy-Forms - https://django-crispy-forms.readthedocs.io/en/latest/
 1. Pillow (Python Imaging Library) - https://pypi.org/project/Pillow/
+1. django-cleanup (Delete old files) - https://github.com/un1t/django-cleanup
 
 ## References
 
