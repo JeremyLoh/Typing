@@ -1,5 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView
+)
 from .models import Post
 
 
@@ -26,6 +30,19 @@ class PostDetailView(DetailView):
     model = Post
     # Looks for default template of format: <app>/<model>_<viewtype>.html
     # public key (pk) is used for grabbing object
+
+
+class PostCreateView(CreateView):
+    model = Post
+    # Add fields for form
+    fields = ['title', 'content']
+    # Shares template with UpdateView
+    # Looks for default template <app>/<model>_form.html
+
+    def form_valid(self, form):
+        # Set author before submitting form
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 def about(request):
