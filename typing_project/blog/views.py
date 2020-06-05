@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView,
     DetailView,
-    CreateView
+    CreateView,
+    UpdateView
 )
 from .models import Post
 
@@ -30,7 +31,7 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model = Post
     # Looks for default template of format: <app>/<model>_<viewtype>.html
-    # public key (pk) is used for grabbing object
+    # primary key (pk) is used for grabbing object
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
@@ -42,6 +43,23 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         # Set author before submitting form
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    # primary key (pk) passed into url route is used for obtaining object
+    model = Post
+    fields = ['title', 'content']
+
+    def test_func(self):
+        # UserPassesTestMixin will run this method
+        # Check if User passes test condition
+        # Get current post, use UpdateView method
+        post = self.get_object()
+        return self.request.user == post.author
+
+    def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
