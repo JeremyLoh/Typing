@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Post
 
 
@@ -20,6 +20,12 @@ class PostListView(ListView):
     context_object_name = 'posts'
     # Change order of posts (add - to reverse order, default is ascending)
     ordering = ['-date_posted']
+
+
+class PostDetailView(DetailView):
+    model = Post
+    # Looks for default template of format: <app>/<model>_<viewtype>.html
+    # public key (pk) is used for grabbing object
 
 
 def about(request):
