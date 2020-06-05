@@ -4,7 +4,8 @@ from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
-    UpdateView
+    UpdateView,
+    DeleteView
 )
 from .models import Post
 
@@ -62,6 +63,18 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+    # After deletion, which page to redirect to
+    success_url = '/'
+    # Default template name: <model>_confirm_delete.html
+
+    def test_func(self):
+        # Check for UserPassesTestMixin
+        post = self.get_object()
+        return post.author == self.request.user
 
 
 def about(request):

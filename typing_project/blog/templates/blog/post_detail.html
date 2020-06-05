@@ -14,10 +14,24 @@ Post
           {{ object.date_posted|date:'j F Y, h:i a' }}
         </small>
       </div>
-      <h2 class="article-title">
+      
+      <h2 class="article-title mt-2">
         {{ object.title }}
       </h2>
       <p class="article-content">{{ object.content }}</p>
+      
+      {% if object.author == user %}
+        <div class="d-flex justify-content-end">
+          <a class="btn bg-info text-white btn-sm mr-1 mt-1 mb-1" 
+          href="{% url 'post-update' object.id %}">
+            Update
+          </a>
+          <a class="btn bg-danger text-white btn-sm mt-1 mb-1" 
+          href="{% url 'post-delete' object.id %}">
+            Delete
+          </a>
+        </div>
+      {% endif %}
     </div>
   </article>
 {% endblock body %}
