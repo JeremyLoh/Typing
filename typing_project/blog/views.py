@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
     ListView,
     DetailView,
@@ -32,7 +33,7 @@ class PostDetailView(DetailView):
     # public key (pk) is used for grabbing object
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     # Add fields for form
     fields = ['title', 'content']
