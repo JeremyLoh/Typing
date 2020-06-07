@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.views.generic import (
     ListView,
     DetailView,
@@ -17,6 +18,20 @@ def index(request):
     return render(request, 'blog/index.html', context)
 
 
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'blog/user_posts.html'
+    context_object_name = 'posts'
+    paginate_by = 5
+
+    # Modify query set listview returns
+    def get_queryset(self):
+        # Return 404 error if user does not exist
+        # kwargs are query parameters
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-date_posted')
+
+
 class PostListView(ListView):
     # model to query to create the list
     model = Post
@@ -27,6 +42,8 @@ class PostListView(ListView):
     context_object_name = 'posts'
     # Change order of posts (add - to reverse order, default is ascending)
     ordering = ['-date_posted']
+    # Set paginator: An integer specifying how many objects should be displayed per page
+    paginate_by = 5
 
 
 class PostDetailView(DetailView):
