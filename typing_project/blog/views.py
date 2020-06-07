@@ -27,6 +27,8 @@ class PostListView(ListView):
     context_object_name = 'posts'
     # Change order of posts (add - to reverse order, default is ascending)
     ordering = ['-date_posted']
+    # Set paginator: An integer specifying how many objects should be displayed per page
+    paginate_by = 5
 
 
 class PostDetailView(DetailView):
